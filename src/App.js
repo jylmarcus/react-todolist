@@ -1,19 +1,18 @@
 import './App.css';
-import Todo from './components/todo/todo';
+import Todolist from './components/todo/todolist';
 
 const todoList = [
-                {title: "todo1", description: "desc1", date: "date1"},
-                {title: "todo2", description: "desc1", date: "date1"},
-                {title: "todo3", description: "desc1", date: "date1"}
+                {id: 1, description: "desc1", date: "date1"},
+                {id: 2, description: "desc2", date: "date2"},
+                {id: 3, description: "desc3", date: "date3"}
               ]
 
 function App() {
-  const todos = todoList.map(todo => 
-      <Todo key={todo.title} title={todo.title} description={todo.description} date={todo.date} />
-    )
+  
   return (
-    <div className="flex box-border font-roboto flex-col h-screen p-5 items-center">
-      {todos}
+    <div className="font-roboto h-screen p-5">
+      <Todolist todoList = {todoList}>
+      </Todolist>
     </div>
   );
 }
