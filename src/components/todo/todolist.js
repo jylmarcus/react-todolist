@@ -2,12 +2,12 @@ import Todo from "./todo";
 import NewTodo from "./NewTodo";
 import { useState } from "react";
 
-export default function Todolist({ todoList }) {
+export default function Todolist({ todoList, handleAddTodo, delTodo }) {
     const [modal, setModal] = useState(false);
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        <NewTodo openModal={modal} closeModal={()=> {setModal(false)}}/>
+        <NewTodo openModal={modal} closeModal={()=> {setModal(false)}} handleAddTodo = {handleAddTodo} />
       <div className="items-start justify-between md:flex">
         <div className="max-w-lg">
           <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">Todos</h3>
@@ -24,8 +24,10 @@ export default function Todolist({ todoList }) {
             {todoList.map((todo) => (
               <Todo
                 key={todo.id}
+                id = {todo.id}
                 description={todo.description}
                 date={todo.date}
+                delTodo = {delTodo}
               />
             ))}
           </tbody>
